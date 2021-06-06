@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%&(c))ic(#d8$9d%_r91!^0gh)&5d^+@7__00r2*f)w@8@zv_@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,6 +83,8 @@ EMAIL_HOST_PASSWORD = 'weathertestarjun@123#'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
