@@ -21,10 +21,10 @@ EXCEL_PATH = os.path.abspath(os.path.join(BASE_DIR, 'excel.xlsx'))
 
 
 
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 1
-    page_size_query_param = 'page_size'
-    max_page_size = 1
+# class StandardResultsSetPagination(PageNumberPagination):
+#     page_size = 1
+#     page_size_query_param = 'page_size'
+#     max_page_size = 1
 
     
 class UserListView(generics.ListAPIView):
@@ -38,12 +38,16 @@ class ListWeather(APIView):
     """ Weather list view """
 
     permission_classes = (permissions.IsAuthenticated,)
-    pagination_class = StandardResultsSetPagination
+    # pagination_class = StandardResultsSetPagination
 
     def get(self, request, format=None):
         """ List the weather infomation of 30 cities"""
+
         try:
-            return Response(utils.get_weather_data())
+            # Django rest pagination not working for APIView so implement using limit and offset
+            offset = int(self.request.query_params.get('offset', 0))
+            limit = int(self.request.query_params.get('limit', offset + 10))
+            return Response(utils.get_weather_data(offset,  limit))
         except Exception as e :
             return APIException(str(e))
 
@@ -65,8 +69,8 @@ class SendEmail(APIView):
 
         weather_data = []
         emails = request.data.get("emails")
-        valid_emails = self.get_vali_emails(emails)
-        weather_data = utils.get_valid_emails()
+        valid_emails = self.get_valid_emails(emails)
+        weather_data = utils.get_weather_data()
         df = pd.DataFrame(weather_data)
         df.to_excel(EXCEL_PATH)
         data = open(EXCEL_PATH, 'rb').read()
