@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'api',
-    'djcelery_email'
+    'celery',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +83,6 @@ EMAIL_HOST_USER = 'weathertestarjun@gmail.com'
 EMAIL_HOST_PASSWORD = 'weathertestarjun@123#'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
