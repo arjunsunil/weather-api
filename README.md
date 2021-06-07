@@ -22,8 +22,8 @@ log in to `http://127.0.0.1:8000/admin/`
  
 Input body
 {
-    "username": "arjun",
-    "password": "arjun@123#"
+   "username":"arjun",
+   "password":"arjun@123#"
 }
 
 2. Weather list `http://127.0.0.1:8000/api/weather/list?limit=1&offset=0`(GET)
@@ -32,7 +32,9 @@ Input body
 
 Input body
 {
-    "emails": ['arjunpp.sunil@gmail.com']
+   "emails":[
+      "arjunpp.sunil@gmail.com"
+   ]
 }
 
 4. Login `http://127.0.0.1:8000/api/auth/logout`(GET) 
