@@ -16,7 +16,7 @@ def get_weather_data(offset=0, limit=-1):
             if limit== -1 and offset==0:
                 return weather_list
             else:
-                return weather_list[offset: offset+limit+1]
+                return weather_list[offset: offset+limit]
         else:
             if "message" in response.json():
                 raise Exception(response.json()['message'])
