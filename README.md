@@ -18,17 +18,21 @@ log in to `http://127.0.0.1:8000/admin/`
 
 ## API List
 
-1. Login `http://127.0.0.1:8000/api/auth/login`(POST) 
-##### Input body
+1. Login `http://127.0.0.1:8000/api/auth/login`(POST)
+ 
+Input body
 {
     "username": "arjun",
     "password": "arjun@123#"
 }
+
 2. Weather list `http://127.0.0.1:8000/api/weather/list?limit=1&offset=0`(GET)
 
 3. Send Email `http://127.0.0.1:8000/api/send/email/`
-##### Input body
+
+Input body
 {
     "emails": ['arjunpp.sunil@gmail.com']
 }
+
 4. Login `http://127.0.0.1:8000/api/auth/logout`(GET) 
